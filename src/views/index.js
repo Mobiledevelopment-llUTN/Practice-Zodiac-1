@@ -89,17 +89,31 @@ const data = [
         Piedra_Preciosa: 'Cuarzo Transparente',
     },
 ];
-
+const getElementImage = (element) => {
+    switch (element) {
+      case 'Fuego':
+        return require('../imgs/Signs/Fire.jpeg');
+      case 'Tierra':
+        return require('../imgs/Signs/Earth.png');
+      case 'Aire':
+        return require('../imgs/Signs/air.png');
+      case 'Agua':
+        return require('../imgs/Signs/Water.png');
+      default:
+        return null;
+    }
+  };
 const Index = () => {
     return (
         <View>
             <View style={style_01.divMain}>
                 <Text style={style_01.h1}>Lista de Zodiacos</Text>
                 <Text style={style_01.p1}>En la astrología occidental se conoce como signos del zodiaco o astrológicos a los doce sectores de treinta grados exactos en los que los babilonios dividieron el camino que recorre el Sol alrededor de la Tierra y que hasta entonces se había segmentado en ocho partes.</Text>
-
                 <ScrollView style={{marginTop:8}}>
                     {data.map(item => <View style={style_01.tarjeta} key={item.Signo} >
-                        <Image source={require('../imgs/Signs/Air.jpeg')}/>
+                        <View style={{ flexDirection: 'row', alignItems: 'center' }}> 
+                        <Image source={getElementImage(item.Elemento)}/>
+                        </View>
                         <Text>Signo: {item.Signo}</Text>
                         <Text>Dias que Abarca: {item.Dias}</Text>
                         <Text>Elemento: {item.Elemento}</Text>
